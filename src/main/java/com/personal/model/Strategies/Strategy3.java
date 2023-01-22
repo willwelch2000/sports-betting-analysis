@@ -1,7 +1,5 @@
 package com.personal.model.Strategies;
 
-import java.util.List;
-
 import com.personal.model.Game;
 
 public class Strategy3 extends Strategy {
@@ -12,6 +10,8 @@ public class Strategy3 extends Strategy {
 
     @Override
     public boolean includeGame(Game game) {
+        // Test game with 5% lower percentage
+
         Game modifiedGame = new Game(game); // percentage will be 5% less
         modifiedGame.setPercentage(game.getPercentage() - 0.05);
         return getExpectedTotal(modifiedGame) >= 0;

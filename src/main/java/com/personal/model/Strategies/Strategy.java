@@ -67,6 +67,8 @@ public abstract class Strategy {
     }
 
     private List<Game> filterGames() {
+        // Filter games based on includeGame function, which can be modified in child class
+
         List<Game> filteredGames = new ArrayList<>();
         for (Game game : games) {
             if (includeGame(game))
@@ -76,6 +78,8 @@ public abstract class Strategy {
     }
 
     public boolean includeGame(Game game) {
+        // Function to decide if a game should be bet on--can be modified in child class
+
         if (!oddsOrPercentage && getExpectedTotal(game) >= expectedTotalMin && game.getPercentage() >= percentageMin && 
                 game.getPercentage() <= percentageMax && game.getOdds() >= oddsMin && game.getOdds() <= oddsMax) {
             return true;
@@ -87,6 +91,8 @@ public abstract class Strategy {
     }
 
     protected Double getExpectedTotal(Game game) {
+        // General function to find the expected total--earnings - loss
+
         Integer odds = game.getOdds();
         Double percentage = game.getPercentage();
 
